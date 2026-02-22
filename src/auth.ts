@@ -19,10 +19,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     where: { email: (credentials.email as string).toLowerCase().trim() },
                 });
 
+                console.log("Auth attempt for:", credentials.email, "User found:", !!user);
+
                 // @ts-ignore
                 if (!user || user.password !== credentials.password) {
+                    console.log("Auth failed: Invalid credentials");
                     return null;
                 }
+
+                console.log("Auth success for:", user.email);
 
                 return {
                     id: user.id,
@@ -53,4 +58,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
     },
     session: { strategy: "jwt" },
+    trustHost: true,
 });
