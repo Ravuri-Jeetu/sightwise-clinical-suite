@@ -16,7 +16,8 @@ import {
     UserCircle,
     ShieldCheck,
     Loader2,
-    AlertCircle
+    PanelLeftClose,
+    PanelLeftOpen,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -29,10 +30,11 @@ import {
     SidebarMenuItem,
     SidebarProvider,
     SidebarTrigger,
-    SidebarInset
+    SidebarInset,
+    useSidebar,
 } from '@/components/ui/sidebar';
 import { useSession, signOut } from "next-auth/react";
-import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface NavItem {
     title: string;
@@ -66,6 +68,35 @@ const PATIENT_NAV: NavItem[] = [
 interface DashboardLayoutProps {
     children: React.ReactNode;
     role: 'receptionist' | 'doctor' | 'patient' | 'admin';
+}
+
+function CollapseButton() {
+    const { state, toggleSidebar } = useSidebar();
+    const isCollapsed = state === 'collapsed';
+    return (
+        <TooltipProvider>
+            <Tooltip>
+                <TooltipTrigger asChild>
+                    <button
+                        onClick={toggleSidebar}
+                        className={cn(
+                            "flex w-full items-center gap-2 rounded-md p-2 text-sm transition-colors",
+                            "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                            isCollapsed && "justify-center"
+                        )}
+                    >
+                        {isCollapsed
+                            ? <PanelLeftOpen className="size-5 shrink-0" />
+                            : <><PanelLeftClose className="size-5 shrink-0" /><span>Collapse</span></>
+                        }
+                    </button>
+                </TooltipTrigger>
+                <TooltipContent side="right">
+                    {isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
+    );
 }
 
 export function DashboardLayout({ children, role }: DashboardLayoutProps) {
@@ -114,10 +145,10 @@ export function DashboardLayout({ children, role }: DashboardLayoutProps) {
             <Sidebar collapsible="icon">
                 <SidebarHeader className="border-b py-4">
                     <div className="flex items-center gap-2 px-2 overflow-hidden">
-                        <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                        <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
                             <Eye className="size-5" />
                         </div>
-                        <div className="grid flex-1 text-left text-sm leading-tight">
+                        <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
                             <span className="truncate font-headline font-bold">SightWise</span>
                             <span className="truncate text-xs opacity-70">Clinical Suite</span>
                         </div>
@@ -161,12 +192,16 @@ export function DashboardLayout({ children, role }: DashboardLayoutProps) {
                                 <span>Logout</span>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <CollapseButton />
+                        </SidebarMenuItem>
                     </SidebarMenu>
                 </SidebarFooter>
             </Sidebar>
             <SidebarInset className="flex flex-col">
                 <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background/95 px-4 backdrop-blur-sm sm:px-6">
-                    <SidebarTrigger />
+                    <SidebarTrigger className="text-muted-foreground hover:text-foreground transition-colors" />
+                    <div className="h-5 w-px bg-border" />
                     <div className="flex-1">
                         <h2 className="text-lg font-headline font-semibold capitalize">{role} Dashboard</h2>
                     </div>
