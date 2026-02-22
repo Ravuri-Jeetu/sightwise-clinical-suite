@@ -47,6 +47,8 @@ export function VisitForm({ patient, history }: { patient: Patient, history: Vis
         vaOS: '',
         iopOD: '',
         iopOS: '',
+        cdrOD: '',
+        cdrOS: '',
         lensOD: '',
         lensOS: '',
         notes: ''
@@ -136,6 +138,25 @@ export function VisitForm({ patient, history }: { patient: Patient, history: Vis
                                 </div>
                             </div>
 
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-2 font-bold text-sm border-b pb-1">
+                                        <Activity size={16} className="text-primary" />
+                                        Cup-Disc Ratio <span className="text-xs font-normal text-muted-foreground">(Glaucoma — alert if &gt; 0.6)</span>
+                                    </div>
+                                    <div className="space-y-3">
+                                        <div className="grid grid-cols-4 items-center gap-4">
+                                            <Label htmlFor="cdr-od" className="text-right text-xs">OD (Right)</Label>
+                                            <Input id="cdr-od" type="number" step="0.1" min="0" max="1" placeholder="0.3" value={formData.cdrOD} onChange={e => setFormData({ ...formData, cdrOD: e.target.value })} className="col-span-3" />
+                                        </div>
+                                        <div className="grid grid-cols-4 items-center gap-4">
+                                            <Label htmlFor="cdr-os" className="text-right text-xs">OS (Left)</Label>
+                                            <Input id="cdr-os" type="number" step="0.1" min="0" max="1" placeholder="0.3" value={formData.cdrOS} onChange={e => setFormData({ ...formData, cdrOS: e.target.value })} className="col-span-3" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="space-y-4 pt-4">
                                 <div className="flex items-center gap-2 font-bold text-sm border-b pb-1">
                                     <Layers size={16} className="text-primary" />
@@ -177,6 +198,8 @@ export function VisitForm({ patient, history }: { patient: Patient, history: Vis
                             visualAcuityRight: formData.vaOD,
                             iopLeft: parseFloat(formData.iopOS) || 0,
                             iopRight: parseFloat(formData.iopOD) || 0,
+                            cupDiscRatioLeft: parseFloat(formData.cdrOS) || 0,
+                            cupDiscRatioRight: parseFloat(formData.cdrOD) || 0,
                             lensGradeLeft: parseFloat(formData.lensOS) || 0,
                             lensGradeRight: parseFloat(formData.lensOD) || 0,
                             notes: formData.notes

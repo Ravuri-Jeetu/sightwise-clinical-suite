@@ -96,7 +96,7 @@ export function AdminClient({ initialStaff }: { initialStaff: Staff[] }) {
                             </div>
                             <div className="space-y-2">
                                 <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Work Email</Label>
-                                <Input type="email" placeholder="staff@sightwise.com" value={newStaff.email} onChange={(e) => setNewStaff({ ...newStaff, email: e.target.value })} required />
+                                <Input type="email" placeholder="staff@sankaraeye.com" value={newStaff.email} onChange={(e) => setNewStaff({ ...newStaff, email: e.target.value })} required />
                             </div>
                             <div className="space-y-2">
                                 <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Designated Role</Label>
@@ -113,7 +113,23 @@ export function AdminClient({ initialStaff }: { initialStaff: Staff[] }) {
                             {newStaff.role === 'doctor' && (
                                 <div className="space-y-2">
                                     <Label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Specialization</Label>
-                                    <Input placeholder="e.g. Glaucoma Specialist" value={newStaff.specialization} onChange={(e) => setNewStaff({ ...newStaff, specialization: e.target.value })} />
+                                    <Select value={newStaff.specialization} onValueChange={(val) => setNewStaff({ ...newStaff, specialization: val })}>
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Select specialty..." />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="Cataract & IOL Clinic">Cataract &amp; IOL Clinic</SelectItem>
+                                            <SelectItem value="Glaucoma Diagnosis & Management">Glaucoma Diagnosis &amp; Management</SelectItem>
+                                            <SelectItem value="Cornea & External Eye Disease">Cornea &amp; External Eye Disease</SelectItem>
+                                            <SelectItem value="Retina & Vitreoretinal Services">Retina &amp; Vitreoretinal Services</SelectItem>
+                                            <SelectItem value="Pediatric Ophthalmology & Strabismus">Pediatric Ophthalmology &amp; Strabismus</SelectItem>
+                                            <SelectItem value="LASIK & Laser Vision Correction">LASIK &amp; Laser Vision Correction</SelectItem>
+                                            <SelectItem value="Orbit & Oculoplasty">Orbit &amp; Oculoplasty</SelectItem>
+                                            <SelectItem value="Low Vision & Rehabilitation">Low Vision &amp; Rehabilitation</SelectItem>
+                                            <SelectItem value="Contact Lens Clinic">Contact Lens Clinic</SelectItem>
+                                            <SelectItem value="General Ophthalmology">General Ophthalmology</SelectItem>
+                                        </SelectContent>
+                                    </Select>
                                 </div>
                             )}
                             <Button type="submit" className="w-full mt-4" disabled={isCreating}>

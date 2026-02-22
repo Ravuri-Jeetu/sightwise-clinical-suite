@@ -63,8 +63,10 @@ model ClinicalVisit {
   visitDate               DateTime @default(now())
   visualAcuityRight       String?  // e.g., '20/20'
   visualAcuityLeft        String?  // e.g., '20/25'
-  iopRight                Float?   // Intraocular Pressure (OD)
-  iopLeft                 Float?   // Intraocular Pressure (OS)
+  iopRight                Float?   // Intraocular Pressure (OD) in mmHg — threshold: 21
+  iopLeft                 Float?   // Intraocular Pressure (OS) in mmHg — threshold: 21
+  cupDiscRatioRight       Float?   // Cup-Disc Ratio (OD) — Sankara threshold: 0.6
+  cupDiscRatioLeft        Float?   // Cup-Disc Ratio (OS) — Sankara threshold: 0.6
   lensGradeRight          Int?
   lensGradeLeft           Int?
   notes                   String?
