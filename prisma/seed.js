@@ -16,28 +16,28 @@ async function main() {
     // Create Admin
     await prisma.user.create({
         data: {
-            email: 'admin@clinic.com',
-            password: 'admin', // Simple password for testing
+            email: 'admin@sankaraeye.com',
+            password: 'admin123',
             role: 'admin',
             firstName: 'System',
-            lastName: 'Admin',
+            lastName: 'Administrator',
         },
     })
 
-    // Create Doctor
+    // Create Doctor - Ophthalmologist
     const doctor = await prisma.user.create({
         data: {
-            email: 'doctor@clinic.com',
-            password: 'doctor', // Simple password for testing
+            email: 'doctor@sankaraeye.com',
+            password: 'doctor123',
             role: 'doctor',
-            firstName: 'John',
-            lastName: 'Doe',
-            specialization: 'Ophthalmology',
+            firstName: 'Priya',
+            lastName: 'Sharma',
+            specialization: 'Cataract & IOL',
             doctorProfile: {
                 create: {
-                    medicalLicenseNumber: 'MD123456',
-                    specialization: 'Retina Specialist',
-                    email: 'doctor@clinic.com'
+                    medicalLicenseNumber: 'KA-MED-2018-04521',
+                    specialization: 'Cataract & IOL Specialist',
+                    email: 'doctor@sankaraeye.com'
                 }
             }
         },
@@ -46,19 +46,19 @@ async function main() {
     // Create Patient
     const patient = await prisma.user.create({
         data: {
-            email: 'patient@example.com',
-            password: 'patient', // Simple password for testing
+            email: 'patient@sankaraeye.com',
+            password: 'patient123',
             role: 'patient',
-            firstName: 'Jane',
-            lastName: 'Smith',
+            firstName: 'Ravi',
+            lastName: 'Kumar',
             patientProfile: {
                 create: {
-                    firstName: 'Jane',
-                    lastName: 'Smith',
-                    email: 'patient@example.com',
-                    gender: 'Female',
-                    contactNumber: '555-0101',
-                    address: '123 Health St',
+                    firstName: 'Ravi',
+                    lastName: 'Kumar',
+                    email: 'patient@sankaraeye.com',
+                    gender: 'Male',
+                    contactNumber: '+91-9876543210',
+                    address: '14, Brigade Road, Bengaluru, Karnataka 560001',
                 }
             }
         },
@@ -67,11 +67,11 @@ async function main() {
     // Create Receptionist
     await prisma.user.create({
         data: {
-            email: 'receptionist@clinic.com',
-            password: 'receptionist',
+            email: 'reception@sankaraeye.com',
+            password: 'reception123',
             role: 'receptionist',
-            firstName: 'Sarah',
-            lastName: 'Connor',
+            firstName: 'Ananya',
+            lastName: 'Reddy',
         },
     })
 

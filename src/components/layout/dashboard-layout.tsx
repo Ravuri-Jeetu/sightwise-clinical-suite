@@ -149,8 +149,8 @@ export function DashboardLayout({ children, role }: DashboardLayoutProps) {
                             <Eye className="size-5" />
                         </div>
                         <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
-                            <span className="truncate font-headline font-bold">SightWise</span>
-                            <span className="truncate text-xs opacity-70">Clinical Suite</span>
+                            <span className="truncate font-headline font-bold">Sankara Eye</span>
+                            <span className="truncate text-xs opacity-70">Clinical System</span>
                         </div>
                     </div>
                 </SidebarHeader>

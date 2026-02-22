@@ -30,12 +30,12 @@ export default function Home() {
       <div className="bg-primary text-primary-foreground py-2 px-6">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-[13px] gap-4">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5"><Globe size={14} /> w: sightwise.clinical</span>
-            <span className="flex items-center gap-1.5"><Mail size={14} /> e: info@sightwise.clinical</span>
-            <span className="flex items-center gap-1.5"><Phone size={14} /> 1-800-SIGHT-WISE</span>
+            <span className="flex items-center gap-1.5"><Globe size={14} /> sankaraeye.com</span>
+            <span className="flex items-center gap-1.5"><Mail size={14} /> info@sankaraeye.com</span>
+            <span className="flex items-center gap-1.5"><Phone size={14} /> +91-80690-38900</span>
           </div>
           <div className="flex gap-4 font-bold">
-            <span>CLINIC CODE: SWC-01</span>
+            <span>ACCREDITED: NABH</span>
             <span>PORTAL: v2.5.0</span>
           </div>
         </div>
@@ -48,8 +48,8 @@ export default function Home() {
             <Eye size={32} />
           </div>
           <div>
-            <h1 className="text-2xl font-headline font-bold text-foreground leading-none">SIGHTWISE</h1>
-            <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mt-1">Advanced Ophthalmology Suite</p>
+            <h1 className="text-2xl font-headline font-bold text-foreground leading-none">SANKARA EYE</h1>
+            <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mt-1">Clinical Information System — Bengaluru</p>
           </div>
         </div>
       </header>
@@ -65,8 +65,8 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
           <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-2xl max-w-lg text-center mx-4">
-            <h2 className="text-2xl md:text-3xl font-headline font-bold text-primary mb-2">Clinical Excellence & AI Insights</h2>
-            <p className="text-sm text-muted-foreground">Access your dedicated clinical portal to manage patient care and health records.</p>
+            <h2 className="text-2xl md:text-3xl font-headline font-bold text-primary mb-2">Eliminating Curable Blindness</h2>
+            <p className="text-sm text-muted-foreground">Sankara Eye Hospital — Super-Specialty Eye Care, Bengaluru. NABH Accredited. Est. 2008.</p>
           </div>
         </div>
       </div>
@@ -117,10 +117,10 @@ export default function Home() {
       <footer className="bg-white border-t py-8 px-6 text-center mt-auto">
         <div className="max-w-7xl mx-auto">
           <p className="text-sm text-muted-foreground">
-            Copyright © All rights reserved by SightWise Clinical Technologies. Anytown, USA.
+            Copyright © Sankara Eye Foundation India. Varthur Main Rd, Munnekollal, Bengaluru — 560037.
           </p>
           <p className="text-[10px] text-muted-foreground mt-2 uppercase tracking-widest">
-            Powered by Vision Analytics Solutions Pvt Ltd.
+            A Charitable Eye Hospital | NABH Accredited | Mon–Sat 09:00–18:00
           </p>
         </div>
       </footer>
